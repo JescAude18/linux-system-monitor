@@ -50,3 +50,9 @@ echo "${DISK_USED}"
 echo -n "Free : "
 DISK_FREE=$(df -h | awk '$6 == "/"' | awk '{print $4}')
 echo -e "${DISK_FREE}\n"
+
+# Top 5 processes by CPU usage
+echo "-------------- Top 5 processes by CPU usage---------------"
+echo "    PID PROCESS         %CPU"
+TOP5_CPU=$(ps -eo pid,comm,%cpu | tail -n +2 | sort -k3 -nr | head -n 5)
+echo -e "${TOP5_CPU}\n"
