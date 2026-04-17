@@ -77,6 +77,13 @@ echo -e "Kernel: ${KERNEL}\n"
 ARCHITECTURE=$(hostnamectl | grep "Architecture" | cut -d ':' -f2)
 echo -e "Architecture: ${ARCHITECTURE}\n"
 # Uptime
-UPTIME=$(uptime -p | awk '{ for (i=2; i<=NF;i++) printf "%s%s", $i, (i<NF ? OFS : ORS);}')
+UPTIME=$(uptime -p | awk '{ for (i=2;i<=NF;i++) printf "%s%s", $i, (i<NF ? OFS : ORS);}')
 SINCE=$(uptime -s)
 echo -e "Uptime: ${UPTIME} since ${SINCE}\n"
+# Load average
+LOAD=$(uptime | awk '{for(i=8;i<=NF;i++) printf "%s%s", $i, (i<NF ? OFS : ORS);}')
+echo -e "Load average (1 minute, 5 minutes, 15 minutes): ${LOAD}\n"
+# Logged in users
+LOGGED=$(who)
+echo "Logged in users:"
+echo -e "${LOGGED}\n"
