@@ -64,3 +64,19 @@ echo -e "${TOP5_CPU}\n"
 echo "---------------- Top 5 processes by MEM usage ---------------"
 TOP5_MEM=$(ps -eo pid,comm,%mem --sort=-%mem | head -n 6)
 echo -e "${TOP5_MEM}\n"
+
+# Bonus
+echo -e "-------------------------- Extra infos -----------------------------\n"
+# OS Version
+OS_VERSION=$(hostnamectl | grep "Operating System")
+echo -e "${OS_VERSION}\n"
+# Kernel
+KERNEL=$(hostnamectl | grep "Kernel" | cut -d ':' -f2)
+echo -e "Kernel: ${KERNEL}\n"
+# Architecture
+ARCHITECTURE=$(hostnamectl | grep "Architecture" | cut -d ':' -f2)
+echo -e "Architecture: ${ARCHITECTURE}\n"
+# Uptime
+UPTIME=$(uptime -p | awk '{ for (i=2; i<=NF;i++) printf "%s%s", $i, (i<NF ? OFS : ORS);}')
+SINCE=$(uptime -s)
+echo -e "Uptime: ${UPTIME} since ${SINCE}\n"
