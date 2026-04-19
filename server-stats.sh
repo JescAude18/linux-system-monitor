@@ -21,7 +21,7 @@ echo -e "${PINK_B}=                               SYSTEM INFO                   
 echo -e "${PINK_B}=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=${RESET}\n"
 
 echo "Welcome to this system monitor ! It displays statistics on the CPU, RAM, disk, the" 
-echo " top five (05) processes by RAM and CPU, the os version, kernel, logged in users, "
+echo "top five (05) processes by RAM and CPU, the os version, kernel, logged in users, "
 echo -e "architecture, uptime and load average. Thanks for trying it ♥️ .\n"
 
 # CPU usage
@@ -96,7 +96,7 @@ UPTIME=$(uptime -p | awk '{ for (i=2;i<=NF;i++) printf "%s%s", $i, (i<NF ? OFS :
 SINCE=$(uptime -s)
 echo -e "${BLUE}Uptime           :${RESET} ${UPTIME} since ${SINCE}\n"
 # Load average
-LOAD=$(uptime | awk '{for(i=8;i<=NF;i++) printf "%s%s", $i, (i<NF ? OFS : ORS);}')
+LOAD=$(uptime | awk '{for(i=9;i<=NF;i++) printf "%s%s", $i, (i<NF ? OFS : ORS);}')
 echo -e "${BLUE}Load average     : ${RESET}${LOAD}\n"
 # Logged in users
 LOGGED=$(who)
