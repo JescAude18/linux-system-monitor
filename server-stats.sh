@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ##
-## EPITECH PROJECT, 2026
+## PERSONAL PROJECT, 2026
 ## linux-system-monitor
 ## File description:
 ## server-stats
@@ -82,22 +82,28 @@ echo -e "${TOP5_MEM}\n"
 
 # Bonus
 echo -e "${CYAN_B}------------------------ Extra infos ------------------------${RESET}\n"
+
 # OS Version
 OS_VERSION=$(hostnamectl | grep "Operating System" | cut -d ':' -f2)
 echo -e "${BLUE}Operating System :${RESET}${OS_VERSION}\n"
+
 # Kernel
 KERNEL=$(hostnamectl | grep "Kernel" | cut -d ':' -f2)
 echo -e "${BLUE}Kernel           :${RESET}${KERNEL}\n"
+
 # Architecture
 ARCHITECTURE=$(hostnamectl | grep "Architecture" | cut -d ':' -f2)
 echo -e "${BLUE}Architecture     :${RESET}${ARCHITECTURE}\n"
+
 # Uptime
 UPTIME=$(uptime -p | awk '{ for (i=2;i<=NF;i++) printf "%s%s", $i, (i<NF ? OFS : ORS);}')
 SINCE=$(uptime -s)
 echo -e "${BLUE}Uptime           :${RESET} ${UPTIME} since ${SINCE}\n"
+
 # Load average
 LOAD=$(uptime | awk '{for(i=9;i<=NF;i++) printf "%s%s", $i, (i<NF ? OFS : ORS);}')
 echo -e "${BLUE}Load average     : ${RESET}${LOAD}\n"
+
 # Logged in users
 LOGGED=$(who)
 echo -e "${BLUE}Logged in users  :${RESET}"
